@@ -46,11 +46,22 @@ body {
 }
 
 .login {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 2em;
     background-color: rgb(34, 43, 119);
+    padding: 2%;
+    color: #F5F3F5;
 }
 
 .logo {
-    background-color: rgb(36, 97, 56);
+    background-image: url("../img/logo.svg");
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    
 }
 .stats {
     background-color: rgb(133, 13, 39);
