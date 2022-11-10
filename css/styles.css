@@ -132,3 +132,40 @@ body {
     overflow-y: hidden;
     text-align: center;
 }
+
+.card_init {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgba(211, 211, 211, 0.582);
+    padding: 20px;
+    text-align: center;
+    margin: 4%;
+    border-radius: 10px;
+    box-shadow: var(--shadowColor);
+}
+
+#plus {
+    margin-left: 5%;
+    margin-top: 10%;
+    -webkit-transition: -webkit-transform .8s ease-in-out;
+    -ms-transition: -ms-transform .8s ease-in-out;
+    transition: transform .8s ease-in-out;
+}
+#plus:hover + #add_new {
+    opacity: 100;
+}
+
+#plus:hover {
+    transform: rotate(360deg) scale(2);
+    -ms-transform: rotate(360deg) scale(2);
+    -webkit-transform: rotate(360deg) scale(2);
+}
+
+#plus:active {
+    opacity: 50%
+}
+
+#add_new {
+    opacity: 0;
+}
