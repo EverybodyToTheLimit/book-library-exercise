@@ -6,20 +6,25 @@ let myLibrary = [
             "title": "Hobbit",
             "author": "J R R Tolkien",
             "img": "https://storage.googleapis.com/lr-assets/kids/covers/_hires_imported/9780261103252.jpg",
+            "read": "false"
         },
         {
             "id": 1,
             "title": "White Noise",
             "author": "Don Delilo",
             "img": "https://d3525k1ryd2155.cloudfront.net/h/187/168/283168187.0.l.jpg",
+            "read": "false"
         },
         {
             "id": 2,
             "title": "The Witcher",
             "author": "Andrew Sapkowski",
             "img": "https://www.orbitbooks.net/wp-content/uploads/2022/06/Sapkowski_TimeofContempt_HC-scaled.jpg",
+            "read": "false"
         }
     ]
+
+//constructor
 
 function Book(id, title, author, img) {
     this.id = id
@@ -28,10 +33,12 @@ function Book(id, title, author, img) {
     this.img = img
   }
 
-Book.prototype.delete = function () {
-    myLibrary.splice(Book.id, 1)
-}
+// add properties to proto 
+
+Book.prototype.read = true
   
+// load up the exisitng books
+
 function addBookToLibrary() {
 
     const keys = Object.keys(myLibrary);
@@ -43,6 +50,8 @@ function addBookToLibrary() {
 
     })
 }
+
+// function to add a single book to library create divs and assign classes
 
 addBookToLibrary();
 
@@ -89,6 +98,8 @@ function addSingleBook(key) {
     centerDiv.append(readButton)
     centerDiv.append(removeButton)
 
+// event listener for the remove and read buttons
+
     document.getElementById(removeButton.id).addEventListener('click', () => {
         let buttonNumber = parseInt(removeButton.id.slice(-1));
         let indexNo = myLibrary.findIndex(function(book, index) {
@@ -97,6 +108,32 @@ function addSingleBook(key) {
         });
         myLibrary.splice(indexNo, 1);
         document.getElementById(buttonNumber).remove();
+    })
+
+    document.getElementById(readButton.id).addEventListener('click', () => {
+        let readbuttonNumber = parseInt(removeButton.id.slice(-1));
+        let indexNo = myLibrary.findIndex(function(book, index) {
+            if(book.id == readbuttonNumber)
+                return true;
+        });
+        if (myLibrary[indexNo].read === "false") {
+            myLibrary[indexNo].read = "true";
+            node = document.getElementById(readbuttonNumber);
+            node1 = node.firstChild;
+            node1.firstChild.className = "read"
+            let completedImg = document.createElement("img");
+            completedImg.src = "../book-library-exercise/img/completed.png"
+            completedImg.className = "overlay"
+            node.firstChild.append(completedImg);
+        }
+        else if (myLibrary[indexNo].read === "true") {
+            myLibrary[indexNo].read = "false";
+            node = document.getElementById(readbuttonNumber);
+            node1 = node.firstChild;
+            node1.firstChild.className = ""
+            node1.firstChild.nextSibling.remove();
+
+        }
     })
     
 }
