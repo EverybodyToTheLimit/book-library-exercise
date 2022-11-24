@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/styles.css">
     <title>Library app</title>
+    <link rel="icon" type="image/x-icon" href="./img/logo.ico">
 </head>
 <body>
-    <div class="container">
+    <div id="container" class="container">
         <div class="header">
             <div class="stats"></div>
             <div class="logo"></div>
@@ -25,9 +26,64 @@
                 <img id="plus" src="./img/plus.png"/>
                 <p id="add_new">ADD NEW MOVIE</p>
 
-
             </div>
         </div>
+            
+        
+    </div>
+    <div id="new-form">
+        <form class="form" action="">
+            <div class="formbold-form-title">
+                <h2 class="">Add a book</h2>
+                <p>
+                  Please add the book Title, Author and a link to the cover art
+                </p>
+              </div>
+        
+              <div class="formbold-input-flex">
+                <div>
+                  <label for="title" class="formbold-form-label">
+                    Title*
+                  </label>
+                  <input
+                    type="text"
+                    name="title"
+                    id="title-form"
+                    class="formbold-form-input"
+                    required
+                  />
+                </div>
+                <div>
+                  <label for="author" class="formbold-form-label"> Author* </label>
+                  <input
+                    type="text"
+                    name="author"
+                    id="author-form"
+                    class="formbold-form-input"
+                    required
+                  />
+                </div>
+              </div>
+        
+        
+              <div class="formbold-mb-3">
+                <label for="image" class="formbold-form-label">
+                  Image URL
+                </label>
+                <input
+                  type="text"
+                  name="image"
+                  id="image-form"
+                  class="formbold-form-input"
+                />
+              </div>
+        
+    
+    
+        
+        
+              <button class="formbold-btn" id="submitBtn">Add book</button>
+          </form>
     </div>
 
 
