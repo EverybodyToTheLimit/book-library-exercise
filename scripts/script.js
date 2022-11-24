@@ -27,6 +27,10 @@ function Book(id, title, author, img) {
     this.author = author
     this.img = img
   }
+
+Book.prototype.delete = function () {
+    myLibrary.splice(Book.id, 1)
+}
   
 function addBookToLibrary() {
 
@@ -55,6 +59,8 @@ function addSingleBook(key) {
     let imgElement = document.createElement("img");
     let titleH4 = document.createElement("H4");
     let authorP = document.createElement("p");
+    let readButton = document.createElement("button")
+    let removeButton = document.createElement("button")
 
     cardDiv.className = "card";
     cardDiv.id = tempId;
@@ -66,6 +72,11 @@ function addSingleBook(key) {
     titleH4.textContent = tempTitle
     authorP.className = "author"
     authorP.textContent = tempAuthor;
+    readButton.textContent = "Toggle read"
+    readButton.id = "readBtn" + tempId;
+    removeButton.textContent = "Remove"
+    removeButton.id = "removeBtn" + tempId;
+    document.getElementById(readButton.id)
 
     let node = document.getElementById("cards");
     node.append(cardDiv);
@@ -75,6 +86,19 @@ function addSingleBook(key) {
     detailsDiv.append(centerDiv);
     centerDiv.append(titleH4);
     centerDiv.append(authorP);
+    centerDiv.append(readButton)
+    centerDiv.append(removeButton)
+
+    document.getElementById(removeButton.id).addEventListener('click', () => {
+        let buttonNumber = parseInt(removeButton.id.slice(-1));
+        let indexNo = myLibrary.findIndex(function(book, index) {
+            if(book.id == buttonNumber)
+                return true;
+        });
+        myLibrary.splice(indexNo, 1);
+        document.getElementById(buttonNumber).remove();
+    })
+    
 }
 
 // handle click of the add new book
@@ -94,7 +118,7 @@ submitButton.addEventListener("click", function(event) {
     let tempImage = document.getElementById("image-form").value;
     myLibrary[tempId] = new Book(tempId, tempTitle, tempAuthor, tempImage);
     addSingleBook(tempId);
-    currentId = currentId++
+    currentId = currentId + 1;
     document.getElementById("author-form").value = "";
     document.getElementById("title-form").value = "";
     document.getElementById("image-form").value = "";

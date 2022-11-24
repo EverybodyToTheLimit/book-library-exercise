@@ -74,7 +74,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-    background-color: #F5F3F5;
+    /* background-color: #F5F3F5; */
     margin: 4%;
     border-radius: 10px;
     box-shadow: var(--shadowColor);
@@ -95,11 +95,17 @@ body {
     opacity: .5;
     transform: translateX(30%);/*100%*/
 }
+
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 .card .details {
     position: absolute;
     top: 0;
     left: 0;
-    width: 90%;/*100%*/
+    width: 83%;/*100%*/
     height: 100%;
     background: #ffc107;
     border-radius: 10px;
@@ -115,9 +121,10 @@ body {
     padding: 20px;
     text-align: center;
     background: #fff;
-    /* position: absolute;
+    position: absolute;
     top: 50%;
-    transform: translateY(-50%); */
+    gap: 10px;
+    transform: translateY(-50%);
 }
 
 .title, .author {
