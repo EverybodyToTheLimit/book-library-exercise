@@ -27,15 +27,15 @@ let myLibrary = [
 //constructor
 
 function Book(id, title, author, img) {
-    this.id = id
-    this.title = title
-    this.author = author
+    this.id = id,
+    this.title = title,
+    this.author = author,
     this.img = img
   }
 
 // add properties to proto 
 
-Book.prototype.read = true
+Book.prototype.read = "false";
   
 // load up the exisitng books
 
@@ -116,7 +116,7 @@ function addSingleBook(key) {
             if(book.id == readbuttonNumber)
                 return true;
         });
-        if (myLibrary[indexNo].read === "false") {
+        if (myLibrary[indexNo].read == "false") {
             myLibrary[indexNo].read = "true";
             node = document.getElementById(readbuttonNumber);
             node1 = node.firstChild;
@@ -126,7 +126,7 @@ function addSingleBook(key) {
             completedImg.className = "overlay"
             node.firstChild.append(completedImg);
         }
-        else if (myLibrary[indexNo].read === "true") {
+        else if (myLibrary[indexNo].read == "true") {
             myLibrary[indexNo].read = "false";
             node = document.getElementById(readbuttonNumber);
             node1 = node.firstChild;
@@ -153,6 +153,10 @@ submitButton.addEventListener("click", function(event) {
     let tempTitle = document.getElementById("author-form").value;
     let tempAuthor = document.getElementById("title-form").value;
     let tempImage = document.getElementById("image-form").value;
+    if (tempImage.includes("http")) {}
+    else {
+        tempImage = "https://islandpress.org/sites/default/files/default_book_cover_2015.jpg"
+    }
     myLibrary[tempId] = new Book(tempId, tempTitle, tempAuthor, tempImage);
     addSingleBook(tempId);
     currentId = currentId + 1;
